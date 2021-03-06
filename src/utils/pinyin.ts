@@ -82,16 +82,27 @@ const otherPinyin = [
   'o',
   'ou',
 ]
-const schemesMeta = scheme.map(e => {return {
-  id: e.id,
-  name: e.name,
-  pinyin: e.pinyin
-}})
+const schemesMeta = scheme.map(e => {
+  return {
+    id: e.id,
+    name: e.name,
+    pinyin: e.pinyin,
+  }
+})
 
 const allSchemes = schemesMeta.map(e => e.name)
 
-const validate = (usingScheme: string, pinyin: Pinyin, shuang: Pinyin) => {
-  if (!allSchemes.includes(usingScheme))
+const validate = (usingScheme: string, pinyin: Pinyin, input: Pinyin):boolean => {
+  if (!allSchemes.includes(usingScheme)) {
+    return false
+  }
+  const schemeDetail = scheme.
+  pinyin.forEach(e => {
+    if (e.length == 1){
+      scheme.
+    }
+  })
+  return true
 }
 
 const pinyinRegex = new RegExp(

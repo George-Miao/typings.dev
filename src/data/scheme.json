@@ -4,7 +4,7 @@
     "name": "自然码",
     "pinyin": "ziranma",
     "scheme": {
-      "sheng": {
+      "initial": {
         "b": "b",
         "c": "c",
         "d": "d",
@@ -29,7 +29,7 @@
         "sh": "u",
         "zh": "v"
       },
-      "yun": {
+      "final": {
         "a": "a",
         "ai": "l",
         "an": "j",
@@ -85,7 +85,7 @@
     "name": "国标",
     "pinyin": "guobiao",
     "scheme": {
-      "sheng": {
+      "initial": {
         "b": "b",
         "c": "c",
         "d": "d",
@@ -110,7 +110,7 @@
         "sh": "u",
         "zh": "v"
       },
-      "yun": {
+      "final": {
         "a": "a",
         "ai": "k",
         "an": "f",
@@ -166,7 +166,7 @@
     "name": "拼音加加",
     "pinyin": "pinyinjiajia",
     "scheme": {
-      "sheng": {
+      "initial": {
         "b": "b",
         "c": "c",
         "d": "d",
@@ -191,7 +191,7 @@
         "sh": "i",
         "zh": "v"
       },
-      "yun": {
+      "final": {
         "a": "a",
         "ai": "s",
         "an": "f",
@@ -247,7 +247,7 @@
     "name": "搜狗双拼",
     "pinyin": "sougou",
     "scheme": {
-      "sheng": {
+      "initial": {
         "b": "b",
         "c": "c",
         "d": "d",
@@ -272,7 +272,7 @@
         "sh": "u",
         "zh": "v"
       },
-      "yun": {
+      "final": {
         "a": "a",
         "ai": "l",
         "an": "j",
@@ -328,7 +328,7 @@
     "name": "微软",
     "pinyin": "weiruan",
     "scheme": {
-      "sheng": {
+      "initial": {
         "b": "b",
         "c": "c",
         "d": "d",
@@ -353,7 +353,7 @@
         "sh": "u",
         "zh": "v"
       },
-      "yun": {
+      "final": {
         "a": "a",
         "ai": "l",
         "an": "j",
@@ -409,7 +409,7 @@
     "name": "小鹤",
     "pinyin": "xiaohe",
     "scheme": {
-      "sheng": {
+      "initial": {
         "b": "b",
         "c": "c",
         "d": "d",
@@ -434,7 +434,7 @@
         "sh": "u",
         "zh": "v"
       },
-      "yun": {
+      "final": {
         "a": "a",
         "ai": "d",
         "an": "j",
@@ -490,7 +490,7 @@
     "name": "智能ABC",
     "pinyin": "zhinengABC",
     "scheme": {
-      "sheng": {
+      "initial": {
         "b": "b",
         "c": "c",
         "d": "d",
@@ -515,7 +515,7 @@
         "sh": "v",
         "zh": "a"
       },
-      "yun": {
+      "final": {
         "a": "a",
         "ai": "l",
         "an": "j",
@@ -571,7 +571,7 @@
     "name": "紫光双拼",
     "pinyin": "ziguang",
     "scheme": {
-      "sheng": {
+      "initial": {
         "b": "b",
         "c": "c",
         "d": "d",
@@ -596,7 +596,7 @@
         "sh": "i",
         "zh": "u"
       },
-      "yun": {
+      "final": {
         "a": "a",
         "ai": "p",
         "an": "r",
