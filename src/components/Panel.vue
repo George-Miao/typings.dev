@@ -13,33 +13,33 @@
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, inject, ref } from "vue";
-  import wordListData from "../data/generated.json";
+  import { computed, defineComponent, inject, ref } from 'vue'
+  import wordListData from '../data/generated.json'
   // import { splitInitialAndFinal } from '../utils/pinyin'
-  import WordList from "./WordList.vue";
-  import { WordStatus } from "@/types";
-  import type { ConfigStore } from "@/components/Config.vue";
-  import type { PinyinData } from "@/types";
+  import WordList from './WordList.vue'
+  import { WordStatus } from '@/types'
+  import type { ConfigStore } from '@/components/Config.vue'
+  import type { PinyinData } from '@/types'
 
   export default defineComponent({
     components: { WordList },
     setup() {
-      const config = inject("config") as ConfigStore;
-      const words = (wordListData as PinyinData).sort(() => Math.random() - 0.5);
+      const config = inject('config') as ConfigStore
+      const words = (wordListData as PinyinData).sort(() => Math.random() - 0.5)
       const table = {
         words,
         status: Array(config.getState().perPage).fill(WordStatus.NotReached),
-      };
-      console.log(table);
+      }
+      console.log(table)
       // const status:
-      const currentIndex = ref(0);
-      const inputStr = ref("");
+      const currentIndex = ref(0)
+      const inputStr = ref('')
       const handleSpace = (e: KeyboardEvent) => {
-        currentIndex.value += 1;
-        console.log(inputStr.value);
-        e.preventDefault();
-        inputStr.value = "";
-      };
+        currentIndex.value += 1
+        console.log(inputStr.value)
+        e.preventDefault()
+        inputStr.value = ''
+      }
 
       return {
         config,
@@ -47,42 +47,42 @@
         inputStr,
         handleSpace,
         wordListData: words,
-      };
+      }
     },
-  });
+  })
 </script>
 
 <style>
-#panel {
-  background: #fefefe;
-  padding: 1.4rem 1rem;
-  border-radius: 5px;
-  margin: auto;
-  max-width: 650px;
-}
+  #panel {
+    background: #fefefe;
+    padding: 1.4rem 1rem;
+    border-radius: 5px;
+    margin: auto;
+    max-width: 650px;
+  }
 
-#input-area {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: space-between;
-}
+  #input-area {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
 
-#input-area input {
-  flex: auto;
-  border: none;
-  background: #e8c4b8;
-  border-radius: 0.2rem;
-  padding: 0.4rem 1rem;
-  font-size: 1.2rem;
-}
+  #input-area input {
+    flex: auto;
+    border: none;
+    background: #e8c4b8;
+    border-radius: 0.2rem;
+    padding: 0.4rem 1rem;
+    font-size: 1.2rem;
+  }
 
-#input-area button {
-  margin-left: 1rem;
-  padding: 0.4rem 1rem;
-  border-radius: 0.2rem;
-  border: none;
-  background: #363434;
-  color: #e8c4b8;
-  font-size: 1.2rem;
-}
+  #input-area button {
+    margin-left: 1rem;
+    padding: 0.4rem 1rem;
+    border-radius: 0.2rem;
+    border: none;
+    background: #363434;
+    color: #e8c4b8;
+    font-size: 1.2rem;
+  }
 </style>
