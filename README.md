@@ -1,24 +1,21 @@
 # typings.dev
 
-## Project setup
-```
-yarn install
-```
+## TODO
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- [ ] Basic functionalities
+  - [ ] Validate
+  - [ ] Load themes
+  - [ ] Refresh on config
+  - [ ] Timed mode
+- [ ] More modes
+  - [ ] Counted mode
+  - [ ] Zen mode
+  - [ ] Programming mode
+- [ ] More content
+- [ ] Toggle
+  - [ ] Punctuation
+  - [ ] Numbers
+- [ ] Hotkey
+  - [ ] Hotkey customization
+- [ ] i18n
+- [ ] Stats after typing
