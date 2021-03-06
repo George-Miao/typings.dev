@@ -15,8 +15,8 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, computed, ref, PropType, inject } from "vue";
-  import type { PinyinData } from "@/types";
+  import { defineComponent, computed, ref, PropType, inject } from 'vue'
+  import type { PinyinData } from '@/types'
   // import type { ConfigStore } from '@/components/Config.vue'
   export default defineComponent({
     props: {
@@ -25,25 +25,25 @@
       currentIndex: { type: Number, default: 0 },
     },
     setup(props) {
-      const itemRefs = ref([] as Array<HTMLElement>);
-      const pushRef = (el: any) => itemRefs.value.push(el);
+      const itemRefs = ref([] as Array<HTMLElement>)
+      const pushRef = (el: any) => itemRefs.value.push(el)
       const current = computed(() => {
-        const currentItem = props.wordList[props.currentIndex];
+        const currentItem = props.wordList[props.currentIndex]
         return {
           word: currentItem[0],
           pinyin: currentItem[1],
-        };
-      });
-      const currentPage = computed(() => props.wordList.slice(0, props.perPage));
+        }
+      })
+      const currentPage = computed(() => props.wordList.slice(0, props.perPage))
 
       return {
-        config: inject("config"),
+        config: inject('config'),
         current,
         currentPage,
         pushRef,
-      };
+      }
     },
-  });
+  })
 </script>
 
 <style lang="less">
