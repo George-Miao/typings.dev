@@ -64,6 +64,20 @@ const pinyinPart = {
     'v',
   ],
 }
+const otherPinyin = [
+  'a',
+  'ao',
+  'ai',
+  'an',
+  'ang',
+  'e',
+  'ei',
+  'en',
+  'eng',
+  'er',
+  'o',
+  'ou',
+]
 
 const pinyinRegex = new RegExp(
   `(${pinyinPart.initial.join('|')})?(${pinyinPart.final.join('|')})`,
@@ -71,14 +85,12 @@ const pinyinRegex = new RegExp(
 
 const splitInitialAndFinal = (pinyin: string) => {
   pinyin = pinyin.toLowerCase()
+  if (otherPinyin.includes(pinyin)) return [pinyin]
   const result = pinyin.match(pinyinRegex)?.slice(1) as
     | [string, string]
     | undefined
   if (result) {
-    return [
-      pinyinPart.initial.indexOf(result[0]),
-      pinyinPart.final.indexOf(result[1]),
-    ]
+    return [result[0], result[1]]
   } else return null
 }
 

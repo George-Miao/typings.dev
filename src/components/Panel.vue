@@ -17,27 +17,32 @@
   import wordListData from '../data/generated.json'
   // import { splitInitialAndFinal } from '../utils/pinyin'
   import WordList from './WordList.vue'
-  // import { WordStatus } from '@/types'
+  import { WordStatus } from '@/types'
+  import type {ConfigStore} from '@/components/Config.vue'
   import type { PinyinData } from '@/types'
 
   export default defineComponent({
     components: { WordList },
     setup() {
+      const config = inject('config') as ConfigStore
       const words = (wordListData as PinyinData)
         .sort(() => Math.random() - 0.5)
+  const table = {
+        words,
+        status: Array(config)
+      }
       // const status:
       const currentIndex = ref(0)
-      const current = computed(() => words[currentIndex.value])
       const inputStr = ref('')
       const handleSpace = (e: KeyboardEvent) => {
         currentIndex.value += 1
-        console.log(current.value.word, current.value.pinyin)
+        console.log(inputStr.value)
         e.preventDefault()
         inputStr.value = ''
       }
 
       return {
-        config: inject('config'),
+        config,
         currentIndex,
         inputStr,
         handleSpace,

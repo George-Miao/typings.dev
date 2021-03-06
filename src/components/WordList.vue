@@ -7,15 +7,15 @@
       :ref="pushRef"
     >
       <span class="pinyin" :class="{ hide: !config.getState().showPinyin }">{{
-        word.pinyin
+        word[1]
       }}</span>
-      {{ word.word }}
+      {{ word[0] }}
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  import { defineComponent, computed, ref, PropType, inject } from 'vue'
+  import { defineComponent, computed, ref, PropType, inject } from "vue";
   import type { PinyinData } from "@/types";
   // import type { ConfigStore } from '@/components/Config.vue'
   export default defineComponent({
@@ -25,25 +25,25 @@
       currentIndex: { type: Number, default: 0 },
     },
     setup(props) {
-      const itemRefs = ref([] as Array<HTMLElement>)
-      const pushRef = (el: any) => itemRefs.value.push(el)
-      const currentWord = computed(
-        () => props.wordList[props.currentIndex].word,
-      )
-      const currentPinyin = computed(
-        () => props.wordList[props.currentIndex].pinyin,
-      )
-      const currentPage = computed(() => props.wordList.slice(0, props.perPage))
+      const itemRefs = ref([] as Array<HTMLElement>);
+      const pushRef = (el: any) => itemRefs.value.push(el);
+      const current = computed(() => {
+        const currentItem = props.wordList[props.currentIndex];
+        return {
+          word: currentItem[0],
+          pinyin: currentItem[1],
+        };
+      });
+      const currentPage = computed(() => props.wordList.slice(0, props.perPage));
 
       return {
-        config: inject('config'),
-        currentWord,
+        config: inject("config"),
+        current,
         currentPage,
-        currentPinyin,
         pushRef,
-      }
+      };
     },
-  })
+  });
 </script>
 
 <style lang="less">

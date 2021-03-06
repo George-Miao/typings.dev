@@ -4,8 +4,5 @@ export enum WordStatus {
   Correct,
   Inputting,
 }
-
-export type PinyinData = {
-  word: string
-  pinyin: [number, number][]
-}[]
+export type Pinyin = ([string] | [string, string])[]
+export type PinyinData = [string, Pinyin][]
