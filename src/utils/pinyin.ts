@@ -1,3 +1,6 @@
+import scheme from '@/data/scheme.json'
+import type { Pinyin } from '@/types'
+
 const pinyinPart = {
   initial: [
     'zh',
@@ -56,6 +59,7 @@ const pinyinPart = {
     'ao',
     'ou',
     'en',
+    've',
     'a',
     'o',
     'e',
@@ -78,6 +82,17 @@ const otherPinyin = [
   'o',
   'ou',
 ]
+const schemesMeta = scheme.map(e => {return {
+  id: e.id,
+  name: e.name,
+  pinyin: e.pinyin
+}})
+
+const allSchemes = schemesMeta.map(e => e.name)
+
+const validate = (usingScheme: string, pinyin: Pinyin, shuang: Pinyin) => {
+  if (!allSchemes.includes(usingScheme))
+}
 
 const pinyinRegex = new RegExp(
   `(${pinyinPart.initial.join('|')})?(${pinyinPart.final.join('|')})`,

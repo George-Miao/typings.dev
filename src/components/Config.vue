@@ -19,6 +19,8 @@
     localStorage.setItem(k, JSON.stringify(v))
   }
 
+  // Load settings from localStorage
+  // If cannot find corresponding key, create and return with default value
   const config = Object.fromEntries(
     Object.entries(defaultConfig).map(([k, v]) => {
       const keyInStorage = localStorage.getItem(k)
@@ -30,6 +32,7 @@
     }),
   ) as ConfigType
 
+  // Config class
   class ConfigStore extends Store<ConfigType> {
     protected data() {
       return config
@@ -66,6 +69,7 @@
       this.printTable()
     }
     clear() {
+      //TODO: clear config settings
       Object.entries(this.state).forEach(() => {})
     }
   }

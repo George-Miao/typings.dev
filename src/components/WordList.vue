@@ -69,11 +69,7 @@
   .word-list-item {
     box-sizing: content-box;
     margin: 0.1rem 0.45rem;
-    color: #363434;
     text-align: center;
     /* font-size: 1.2rem; */
-  }
-  .highlight {
-    color: #a56de2;
   }
 </style>

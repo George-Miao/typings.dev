@@ -1,0 +1,26 @@
+#app {
+  color: white;
+}
+#word-list-container {
+  border: 1px black;
+}
+#input-area input {
+  background: black;
+  color: white;
+}
+#input-area button {
+  background: black;
+  color: white;
+}
+.word-list-item {
+  color: black;
+}
+.correct {
+  color: green;
+}
+.wrong {
+  color: red;
+}
+.highlight {
+  color: blue;
+}

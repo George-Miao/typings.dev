@@ -22,16 +22,6 @@
   import type { ConfigStore } from '@/components/Config.vue'
   import type { PinyinData } from '@/types'
 
-  // const status:
-  const currentIndex = ref(0)
-  const inputStr = ref('')
-  const handleSpace = (e: KeyboardEvent) => {
-    currentIndex.value += 1
-    console.log(inputStr.value)
-    e.preventDefault()
-    inputStr.value = ''
-  }
-
   export default defineComponent({
     components: { WordList },
     setup() {
@@ -39,7 +29,17 @@
       const words = (wordListData as PinyinData).sort(() => Math.random() - 0.5)
       const statusList = Array(config.getState().perPage).fill(
         WordStatus.NotReached,
-      )
+      ) as WordStatus[]
+
+      // const status:
+      const currentIndex = ref(0)
+      const inputStr = ref('')
+      const handleSpace = (e: KeyboardEvent) => {
+        statusList[currentIndex.value] = WordStatus.Correct
+        currentIndex.value += 1
+        e.preventDefault()
+        inputStr.value = ''
+      }
 
       return {
         config,
@@ -71,7 +71,6 @@
   #input-area input {
     flex: auto;
     border: none;
-    background: #e8c4b8;
     border-radius: 0.2rem;
     padding: 0.4rem 1rem;
     font-size: 1.2rem;
@@ -82,8 +81,6 @@
     padding: 0.4rem 1rem;
     border-radius: 0.2rem;
     border: none;
-    background: #363434;
-    color: #e8c4b8;
     font-size: 1.2rem;
   }
 </style>
