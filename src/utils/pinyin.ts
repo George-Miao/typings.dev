@@ -86,20 +86,14 @@ const otherPinyin = [
   'ou',
 ]
 
-const schemesMeta = data.map(e => {
-  return {
-    id: e.id,
-    name: e.name,
-    pinyin: e.pinyin,
-  }
-})
+export const schemesNames = data.map(e => e.pinyin)
 
 const getRegexpPart = (e: StrOrAry): string => {
   if (typeof e === 'string') return e
   return `(${e[0]}|${e[1]})`
 }
 
-const getStringifiedPart = (e: StrOrAry): string => {
+const flattenStrOrAry = (e: StrOrAry): string => {
   if (typeof e === 'string') return e
   return e[0]
 }
@@ -121,23 +115,25 @@ const validate = (schemeName: string, pinyin: Pinyin, input: string) => {
   return new RegExp(regexpStr).test(input)
 }
 
-const formatPinyin = (schemeName: string, pinyin: Pinyin) => {
+const translatePinyin = (schemeName: string, pinyin: Pinyin) => {
   const schemeMapping = data.find(e => 
     e.pinyin === schemeName
   )?.scheme
-  if (!schemeMapping) return ""
+  if (!schemeMapping) return [""]
   let ret: string[] = []
   pinyin.forEach(e => {
     if (e.length == 1){
-      ret.push(getStringifiedPart(schemeMapping.other[e[0]]))
+      ret.push(flattenStrOrAry(schemeMapping.other[e[0]]))
     }
     else if (e.length == 2){
       ret.push(
-        getStringifiedPart(schemeMapping.initial[e[0]]) 
-        + getStringifiedPart(schemeMapping.final[e[1]]))
+        flattenStrOrAry(schemeMapping.initial[e[0]]) 
+        + 
+        flattenStrOrAry(schemeMapping.final[e[1]])
+        )
     }
   })
-  return ret.join("'")
+  return ret
 }
 
 const pinyinRegex = new RegExp(
@@ -155,4 +151,4 @@ const splitInitialAndFinal = (pinyin: string) => {
   } else return null
 }
 
-export { pinyinPart, pinyinRegex as PinyinRegex, splitInitialAndFinal, validate, formatPinyin }
+export { pinyinPart, pinyinRegex as PinyinRegex, splitInitialAndFinal, validate, translatePinyin }

@@ -1,28 +1,31 @@
+:root {
+  --bg-black: #111111;
+}
 #app {
-  color: white;
+  color: var(--bg-black);
 }
 #word-list-container {
-  border: 1px black;
+  border: 1px var(--bg-black);
 }
 #input-area {
   input {
-    background: black;
+    background: var(--bg-black);
     color: white;
   }
   button {
-    background: black;
+    background: var(--bg-black);
     color: white;
   }
 }
 .word-list-item {
-  color: black;
+  color: var(--color-black);
 }
 .correct {
-  color: green;
+  color: rgb(0, 0, 0);
 }
 .wrong {
-  color: red;
+  color: rgb(172, 172, 172);
 }
 .highlight {
-  color: blue;
+  color: rgb(0, 85, 182);
 }

@@ -5,6 +5,7 @@
 <script lang="ts">
   import { defineComponent, inject, provide, reactive, readonly } from 'vue'
   import { Store } from '@/utils/store'
+  import { schemesNames } from '@/utils/pinyin'
   import themeList from '@/data/themeList.json'
 
   let defaultConfig = {
@@ -72,8 +73,11 @@
       this.state.perPage = perPage
       saveKV('perPage', perPage)
       this.printTable()
+      this.reload()
     }
     setScheme(scheme: string) {
+      if (!schemesNames.includes(scheme))
+        throw new Error(`Unknown scheme ${scheme}`)
       this.state.scheme = scheme
       saveKV('scheme', scheme)
       this.printTable()

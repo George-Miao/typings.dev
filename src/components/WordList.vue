@@ -1,54 +1,58 @@
 <template>
   <div id="word-list-container">
     <div
-      v-for="(word, index) in currentPage"
-      :key="word.word"
+      v-for="(item, index) in currentPage"
+      :key="item.word"
+      class="word-list-item"
       :class="{
-        'word-list-item': true,
-        'correct': statusList[index] === WordStatus.Correct,
-        'wrong': statusList[index] === WordStatus.Wrong,
-        'highlight': index === currentIndex,
+        correct: item.status === WordStatus.Correct,
+        wrong: item.status === WordStatus.Wrong,
+        highlight: index === currentIndex,
       }"
       :ref="pushRef"
     >
-      <span class="pinyin" :class="{ hide: !config.getState().showPinyin }">{{
-        word[1]
+      <span class="pinyin" :class="{ hide: !config.showPinyin }">{{
+        item.shuang.join(' / ')
       }}</span>
-      {{ word[0] }}
+      {{ item.word }}
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  import { defineComponent, computed, ref, PropType, inject, Prop } from 'vue'
-  import type { PinyinData } from '@/types'
+  import { defineComponent, computed, ref, PropType, inject } from 'vue'
   import { WordStatus } from '@/types'
-  // import type { ConfigStore } from '@/components/Config.vue'
+  import { translatePinyin } from '@/utils/pinyin'
+  import { TableType } from './Panel.vue'
+  import { ConfigStore } from './Config.vue'
+
   export default defineComponent({
     props: {
-      words: { type: Object as PropType<PinyinData>, required: true },
-      statusList: { type: Object as PropType<WordStatus[]> },
-      perPage: { type: Number, required: true },
+      table: { type: Object as PropType<TableType>, required: true },
       currentIndex: { type: Number, default: 0 },
     },
     setup(props) {
+      const config = computed(() => (inject('config') as ConfigStore).getState())
       const itemRefs = ref([] as Array<HTMLElement>)
       const pushRef = (el: any) => itemRefs.value.push(el)
       const current = computed(() => {
-        const currentItem = props.words[props.currentIndex]
+        const currentItem = props.table[props.currentIndex]
         return {
-          word: currentItem[0],
-          pinyin: currentItem[1],
+          word: currentItem.word,
+          pinyin: currentItem.pinyin,
         }
       })
-      const currentPage = computed(() => props.words.slice(0, props.perPage))
+      const currentPage = computed(() =>
+        props.table.slice(0, config.value.perPage),
+      )
 
       return {
-        config: inject('config'),
+        config,
         WordStatus,
         current,
         currentPage,
         pushRef,
+        translatePinyin,
       }
     },
   })
@@ -62,14 +66,21 @@
     align-content: flex-start;
     overflow: hidden;
   }
-  .pinyin {
-    position: relative;
-    font-size: 8px;
-  }
+
   .word-list-item {
     box-sizing: content-box;
     margin: 0.1rem 0.45rem;
     text-align: center;
+    margin-top: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     /* font-size: 1.2rem; */
+    .pinyin {
+      // position: absolute;
+      font-size: 0.6rem;
+      // top: -0.5rem;
+    }
   }
 </style>

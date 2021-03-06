@@ -18,5 +18,6 @@ export interface Scheme {
     other: StrToStrOrAry
   }
 }
-export type Pinyin = ([string] | [string, string])[]
+export type PinyinUnit = [string] | [string, string]
+export type Pinyin = PinyinUnit[]
 export type PinyinData = [string, Pinyin][]
