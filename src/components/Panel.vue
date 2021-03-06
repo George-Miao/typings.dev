@@ -1,8 +1,9 @@
 <template>
   <div id="panel">
     <word-list
-      :wordList="wordListData"
+      :words="words"
       :currentIndex="currentIndex"
+      :statusList="statusList"
       :perPage="config.getState().perPage"
     />
     <div id="input-area">
@@ -21,32 +22,32 @@
   import type { ConfigStore } from '@/components/Config.vue'
   import type { PinyinData } from '@/types'
 
+  // const status:
+  const currentIndex = ref(0)
+  const inputStr = ref('')
+  const handleSpace = (e: KeyboardEvent) => {
+    currentIndex.value += 1
+    console.log(inputStr.value)
+    e.preventDefault()
+    inputStr.value = ''
+  }
+
   export default defineComponent({
     components: { WordList },
     setup() {
       const config = inject('config') as ConfigStore
       const words = (wordListData as PinyinData).sort(() => Math.random() - 0.5)
-      const table = {
-        words,
-        status: Array(config.getState().perPage).fill(WordStatus.NotReached),
-      }
-      console.log(table)
-      // const status:
-      const currentIndex = ref(0)
-      const inputStr = ref('')
-      const handleSpace = (e: KeyboardEvent) => {
-        currentIndex.value += 1
-        console.log(inputStr.value)
-        e.preventDefault()
-        inputStr.value = ''
-      }
+      const statusList = Array(config.getState().perPage).fill(
+        WordStatus.NotReached,
+      )
 
       return {
         config,
         currentIndex,
+        statusList,
         inputStr,
         handleSpace,
-        wordListData: words,
+        words,
       }
     },
   })

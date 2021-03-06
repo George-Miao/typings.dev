@@ -3,7 +3,12 @@
     <div
       v-for="(word, index) in currentPage"
       :key="word.word"
-      :class="{ 'word-list-item': true, 'highlight': index === currentIndex }"
+      :class="{
+        'word-list-item': true,
+        'correct': statusList[index] === WordStatus.Correct,
+        'wrong': statusList[index] === WordStatus.Wrong,
+        'highlight': index === currentIndex,
+      }"
       :ref="pushRef"
     >
       <span class="pinyin" :class="{ hide: !config.getState().showPinyin }">{{
@@ -15,12 +20,14 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, computed, ref, PropType, inject } from 'vue'
+  import { defineComponent, computed, ref, PropType, inject, Prop } from 'vue'
   import type { PinyinData } from '@/types'
+  import { WordStatus } from '@/types'
   // import type { ConfigStore } from '@/components/Config.vue'
   export default defineComponent({
     props: {
-      wordList: { type: Object as PropType<PinyinData>, required: true },
+      words: { type: Object as PropType<PinyinData>, required: true },
+      statusList: { type: Object as PropType<WordStatus[]> },
       perPage: { type: Number, required: true },
       currentIndex: { type: Number, default: 0 },
     },
@@ -28,16 +35,17 @@
       const itemRefs = ref([] as Array<HTMLElement>)
       const pushRef = (el: any) => itemRefs.value.push(el)
       const current = computed(() => {
-        const currentItem = props.wordList[props.currentIndex]
+        const currentItem = props.words[props.currentIndex]
         return {
           word: currentItem[0],
           pinyin: currentItem[1],
         }
       })
-      const currentPage = computed(() => props.wordList.slice(0, props.perPage))
+      const currentPage = computed(() => props.words.slice(0, props.perPage))
 
       return {
         config: inject('config'),
+        WordStatus,
         current,
         currentPage,
         pushRef,
