@@ -1,5 +1,5 @@
 <template>
-  <Config><router-view /></Config>
+  <Config><router-view v-if="isRouterAlive" /></Config>
 </template>
 
 <script lang="ts">
@@ -10,8 +10,24 @@
     components: {
       Config,
     },
-    setup() {
-      provide('config', reactive({}))
+    provide() {
+      return {
+        reload: this.reload,
+      }
+    },
+    methods: {
+      reload() {
+        console.log('Reloading')
+        this.isRouterAlive = false
+        this.$nextTick(() => {
+          this.isRouterAlive = true
+        })
+      },
+    },
+    data() {
+      return {
+        isRouterAlive: true,
+      }
     },
   })
 </script>
