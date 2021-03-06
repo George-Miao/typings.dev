@@ -19,6 +19,7 @@
   // import { splitInitialAndFinal } from '../utils/pinyin'
   import WordList from './WordList.vue'
   import { WordStatus } from '@/types'
+  import { validate } from '@/utils/pinyin'
   import type { ConfigStore } from '@/components/Config.vue'
   import type { PinyinData } from '@/types'
 
@@ -35,7 +36,14 @@
       const currentIndex = ref(0)
       const inputStr = ref('')
       const handleSpace = (e: KeyboardEvent) => {
-        statusList[currentIndex.value] = WordStatus.Correct
+        const result = validate(
+          config.getState().scheme,
+          words[currentIndex.value][1],
+          inputStr.value,
+        )
+        statusList[currentIndex.value] = result
+          ? WordStatus.Correct
+          : WordStatus.Wrong
         currentIndex.value += 1
         e.preventDefault()
         inputStr.value = ''

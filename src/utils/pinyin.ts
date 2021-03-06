@@ -1,5 +1,7 @@
 import scheme from '@/data/scheme.json'
-import type { Pinyin } from '@/types'
+import type { Pinyin, Scheme, StrOrAry } from '@/types'
+
+const data = scheme as Scheme[]
 
 const pinyinPart = {
   initial: [
@@ -68,6 +70,7 @@ const pinyinPart = {
     'v',
   ],
 }
+
 const otherPinyin = [
   'a',
   'ao',
@@ -82,7 +85,8 @@ const otherPinyin = [
   'o',
   'ou',
 ]
-const schemesMeta = scheme.map(e => {
+
+const schemesMeta = data.map(e => {
   return {
     id: e.id,
     name: e.name,
@@ -90,19 +94,50 @@ const schemesMeta = scheme.map(e => {
   }
 })
 
-const allSchemes = schemesMeta.map(e => e.name)
+const getRegexpPart = (e: StrOrAry): string => {
+  if (typeof e === 'string') return e
+  return `(${e[0]}|${e[1]})`
+}
 
-const validate = (usingScheme: string, pinyin: Pinyin, input: Pinyin):boolean => {
-  if (!allSchemes.includes(usingScheme)) {
-    return false
-  }
-  const schemeDetail = scheme.
+const getStringifiedPart = (e: StrOrAry): string => {
+  if (typeof e === 'string') return e
+  return e[0]
+}
+
+const validate = (schemeName: string, pinyin: Pinyin, input: string) => {
+  const schemeMapping = data.find(e => 
+    e.pinyin === schemeName
+  )?.scheme
+  if (!schemeMapping) return false
+  let regexpStr = ""
   pinyin.forEach(e => {
     if (e.length == 1){
-      scheme.
+      regexpStr += getRegexpPart(schemeMapping.other[e[0]])
+    }
+    else if (e.length == 2){
+      regexpStr += getRegexpPart(schemeMapping.initial[e[0]]) + getRegexpPart(schemeMapping.final[e[1]])
     }
   })
-  return true
+  return new RegExp(regexpStr).test(input)
+}
+
+const formatPinyin = (schemeName: string, pinyin: Pinyin) => {
+  const schemeMapping = data.find(e => 
+    e.pinyin === schemeName
+  )?.scheme
+  if (!schemeMapping) return ""
+  let ret: string[] = []
+  pinyin.forEach(e => {
+    if (e.length == 1){
+      ret.push(getStringifiedPart(schemeMapping.other[e[0]]))
+    }
+    else if (e.length == 2){
+      ret.push(
+        getStringifiedPart(schemeMapping.initial[e[0]]) 
+        + getStringifiedPart(schemeMapping.final[e[1]]))
+    }
+  })
+  return ret.join("'")
 }
 
 const pinyinRegex = new RegExp(
@@ -120,4 +155,4 @@ const splitInitialAndFinal = (pinyin: string) => {
   } else return null
 }
 
-export { pinyinPart, pinyinRegex as PinyinRegex, splitInitialAndFinal }
+export { pinyinPart, pinyinRegex as PinyinRegex, splitInitialAndFinal, validate, formatPinyin }

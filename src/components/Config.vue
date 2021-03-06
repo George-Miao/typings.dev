@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, provide, reactive } from 'vue'
+  import { defineComponent, inject, provide, reactive, readonly } from 'vue'
   import { Store } from '@/utils/store'
   import themeList from '@/data/themeList.json'
 
@@ -11,6 +11,7 @@
     showPinyin: true,
     theme: 'white',
     perPage: 50,
+    scheme: 'ziranma',
   }
 
   type ConfigType = typeof defaultConfig
@@ -34,6 +35,14 @@
 
   // Config class
   class ConfigStore extends Store<ConfigType> {
+    reload: () => void = () => {
+      console.log('No reload function given, Fallback to location.reload...')
+      location.reload()
+    }
+    constructor(reload?: () => void | undefined) {
+      super()
+      if (reload) this.reload = reload
+    }
     protected data() {
       return config
     }
@@ -59,14 +68,21 @@
       saveKV('theme', theme)
       this.printTable()
     }
-    setPerPage(newValue: number) {
-      this.state.perPage = newValue
-      saveKV('perPage', this.state.perPage)
+    setPerPage(perPage: number) {
+      this.state.perPage = perPage
+      saveKV('perPage', perPage)
       this.printTable()
+    }
+    setScheme(scheme: string) {
+      this.state.scheme = scheme
+      saveKV('scheme', scheme)
+      this.printTable()
+      this.reload()
     }
     reset() {
       this.state = reactive(defaultConfig)
       this.printTable()
+      this.reload()
     }
     clear() {
       //TODO: clear config settings
@@ -74,25 +90,25 @@
     }
   }
 
-  const configStore = new ConfigStore()
-
-  configStore.printTable()
-
   declare const window: {
     config: ConfigStore
     help: () => void
   }
 
-  window.config = configStore
-  window.help = () => {
-    console.log(
-      'Typings.dev help message\nConfig: use config.methodName in console to change configs',
-    )
-    configStore.printTable()
-  }
-
   export default defineComponent({
     setup() {
+      const configStore = new ConfigStore(inject('reload'))
+      configStore.reload()
+
+      configStore.printTable()
+
+      window.config = configStore
+      window.help = () => {
+        console.log(
+          'Typings.dev help message\nConfig: use config.methodName in console to change configs',
+        )
+        configStore.printTable()
+      }
       provide('config', configStore)
       provide('theme', reactive(themeList))
       return {
