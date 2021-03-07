@@ -1,5 +1,5 @@
 <template>
-  <nav class="abs"><a>1</a><a>2</a><a>3</a></nav>
+  <footer class="abs"><a>1</a><a>2</a><a>3</a></footer>
 </template>
 
 <script lang="ts">
@@ -10,8 +10,8 @@
 </script>
 
 <style lang="less">
-  nav {
-    top: 0;
+  footer {
+    bottom: 0;
     a {
       margin: 2rem;
     }

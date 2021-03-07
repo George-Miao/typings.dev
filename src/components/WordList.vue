@@ -11,9 +11,9 @@
       }"
       :ref="pushRef"
     >
-      <span class="pinyin" :class="{ hide: !config.showPinyin }">{{
+      <a class="pinyin" :class="{ hide: !config.showPinyin }">{{
         item.shuang.map(e => e[0].toUpperCase() + e[1]).join('')
-      }}</span>
+      }}</a>
       {{ item.word }}
     </div>
   </div>
@@ -71,16 +71,16 @@
     box-sizing: content-box;
     margin: 0.1rem 0.45rem;
     text-align: center;
-    margin-top: 0.2rem;
+    margin-bottom: 0.6rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     /* font-size: 1.2rem; */
     .pinyin {
-      // position: absolute;
-      font-size: 0.8rem;
-      // top: -0.5rem;
+      position: relative;
+      font-size: 0.75rem;
+      top: 0.1rem;
     }
   }
 </style>

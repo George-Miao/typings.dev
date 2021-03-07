@@ -15,11 +15,3 @@
     },
   })
 </script>
-<style lang="less">
-  .view {
-    margin: auto;
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
-</style>

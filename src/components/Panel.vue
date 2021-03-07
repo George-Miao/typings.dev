@@ -92,7 +92,7 @@
     padding: 1.4rem 1rem;
     border-radius: 5px;
     margin: auto;
-    max-width: 650px;
+    // max-width: 650px;
   }
 
   #input-area {

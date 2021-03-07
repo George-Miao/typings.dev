@@ -1,14 +1,20 @@
 <template>
+  <Nav />
   <Config><router-view v-if="isRouterAlive" /></Config>
+  <Footer />
 </template>
 
 <script lang="ts">
   import { defineComponent, provide, reactive, ref } from 'vue'
   import Config from '@/components/Config.vue'
+  import Nav from '@/components/Nav.vue'
+  import Footer from '@/components/Footer.vue'
 
   export default defineComponent({
     components: {
       Config,
+      Nav,
+      Footer,
     },
     provide() {
       return {
@@ -31,22 +37,3 @@
     },
   })
 </script>
-
-<style lang="less">
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-  }
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    height: 100vh;
-    width: 100vw;
-  }
-  .hide {
-    display: none;
-  }
-</style>
