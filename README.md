@@ -3,19 +3,21 @@
 ## TODO
 
 - [ ] Basic functionalities
-  - [ ] Validate
+  - [x] Validate
   - [ ] Load themes
-  - [ ] Refresh on config
+  - [ ] More content
+  - [x] Refresh on config
   - [ ] Timed mode
+- [ ] Stats after typing
 - [ ] More modes
   - [ ] Counted mode
   - [ ] Zen mode
-  - [ ] Programming mode
-- [ ] More content
+  - [ ] Coding mode
+- [ ] i18n
+  - [ ] Chinese
+  - [ ] Japanese
 - [ ] Toggle
   - [ ] Punctuation
   - [ ] Numbers
 - [ ] Hotkey
   - [ ] Hotkey customization
-- [ ] i18n
-- [ ] Stats after typing
