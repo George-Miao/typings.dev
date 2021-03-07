@@ -104,13 +104,12 @@
       const configStore = new ConfigStore(inject('reload'))
       configStore.reload()
 
-      configStore.printTable()
-
       window.config = configStore
       window.help = () => {
-        console.log(
-          'Typings.dev help message\nConfig: use config.methodName in console to change configs',
-        )
+        console.log('== Typings.dev help message ==')
+        console.log('Config: use config.methodName to change configs')
+        console.log(`Supported scheme: ${schemesNames.join(' / ')}`)
+        console.log('Use config.setScheme(schemeName) to change')
         configStore.printTable()
       }
       provide('config', configStore)
@@ -118,6 +117,9 @@
       return {
         configStore,
       }
+    },
+    mounted() {
+      window.help()
     },
   })
   export type { ConfigStore }
