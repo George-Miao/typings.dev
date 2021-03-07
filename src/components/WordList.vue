@@ -12,7 +12,7 @@
       :ref="pushRef"
     >
       <span class="pinyin" :class="{ hide: !config.showPinyin }">{{
-        item.shuang.join(' / ')
+        item.shuang.map(e => e[0].toUpperCase() + e[1]).join('')
       }}</span>
       {{ item.word }}
     </div>
@@ -79,7 +79,7 @@
     /* font-size: 1.2rem; */
     .pinyin {
       // position: absolute;
-      font-size: 0.6rem;
+      font-size: 0.8rem;
       // top: -0.5rem;
     }
   }
