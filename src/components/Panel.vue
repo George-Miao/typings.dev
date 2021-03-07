@@ -99,6 +99,7 @@
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
+    // height: 100%;
     input {
       flex: auto;
       border: none;

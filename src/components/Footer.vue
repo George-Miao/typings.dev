@@ -11,7 +11,7 @@
 
 <style lang="less">
   footer {
-    bottom: 0;
+    margin-top: 3rem;
     a {
       margin: 2rem;
     }

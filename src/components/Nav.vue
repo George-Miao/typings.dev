@@ -1,5 +1,9 @@
 <template>
-  <nav class="abs"><a>1</a><a>2</a><a>3</a></nav>
+  <nav class="abs">
+    <div class="left">123</div>
+    <div class="placeholder"></div>
+    <div class="right">123</div>
+  </nav>
 </template>
 
 <script lang="ts">
@@ -9,11 +13,20 @@
   })
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   nav {
-    top: 0;
-    a {
-      margin: 2rem;
+    margin-top: 2rem;
+    grid-template-areas: 'left right';
+    line-height: 2.3rem;
+    font-size: 2.3rem;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.5rem;
+    .left {
+      // position: fixed;
+      // left: 1rem;
     }
   }
 </style>
