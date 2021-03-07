@@ -6,16 +6,16 @@
   import { defineComponent, inject, provide, reactive, readonly } from 'vue'
   import { Store } from '@/utils/store'
   import { schemesNames } from '@/utils/pinyin'
+  import { Themes, SupportedScheme, Config } from '@/types'
   import themeList from '@/data/themeList.json'
 
-  let defaultConfig = {
+  let defaultConfig: Config = {
     showPinyin: true,
-    theme: 'white',
+    theme: Themes.BoW,
     perPage: 50,
-    scheme: 'ziranma',
+    scheme: SupportedScheme.Ziranma,
+    mode: 'counted',
   }
-
-  type ConfigType = typeof defaultConfig
 
   const saveKV = <T>(k: string, v: T) => {
     localStorage.setItem(k, JSON.stringify(v))
@@ -32,10 +32,10 @@
         return [k, v]
       }
     }),
-  ) as ConfigType
+  ) as Config
 
   // Config class
-  class ConfigStore extends Store<ConfigType> {
+  class ConfigStore extends Store<Config> {
     reload: () => void = () => {
       console.log('No reload function given, Fallback to location.reload...')
       location.reload()
@@ -64,7 +64,7 @@
       saveKV('showPinyin', this.state.showPinyin)
       this.printTable()
     }
-    setTheme(theme: string) {
+    setTheme(theme: Themes) {
       this.state.theme = theme
       saveKV('theme', theme)
       this.printTable()
@@ -75,7 +75,7 @@
       this.printTable()
       this.reload()
     }
-    setScheme(scheme: string) {
+    setScheme(scheme: SupportedScheme) {
       if (!schemesNames.includes(scheme))
         throw new Error(`Unknown scheme ${scheme}`)
       this.state.scheme = scheme
@@ -85,6 +85,9 @@
     }
     reset() {
       this.state = reactive(defaultConfig)
+      Object.entries(defaultConfig).map(([k, v]) => {
+        saveKV(k, v)
+      })
       this.printTable()
       this.reload()
     }
