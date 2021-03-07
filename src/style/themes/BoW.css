@@ -4,12 +4,15 @@
 #app {
   color: var(--bg-black);
 }
+#panel {
+  border: 1px solid var(--bg-black);
+}
 #word-list-container {
   border: 1px var(--bg-black);
 }
 #input-area input {
-  background: var(--bg-black);
-  color: white;
+  color: var(--bg-black);
+  border: 1px solid var(--bg-black);
 }
 #input-area button {
   background: var(--bg-black);

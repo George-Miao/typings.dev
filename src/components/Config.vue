@@ -1,5 +1,5 @@
 <template>
-  <div :data-theme="configStore.getState().theme"><slot></slot></div>
+  <slot></slot>
 </template>
 
 <script lang="ts">

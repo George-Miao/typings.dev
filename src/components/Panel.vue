@@ -87,7 +87,7 @@
   })
 </script>
 
-<style>
+<style lang="less">
   #panel {
     padding: 1.4rem 1rem;
     border-radius: 5px;
@@ -99,21 +99,21 @@
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
-  }
-
-  #input-area input {
-    flex: auto;
-    border: none;
-    border-radius: 0.2rem;
-    padding: 0.4rem 1rem;
-    font-size: 1.2rem;
-  }
-
-  #input-area button {
-    margin-left: 1rem;
-    padding: 0.4rem 1rem;
-    border-radius: 0.2rem;
-    border: none;
-    font-size: 1.2rem;
+    input {
+      flex: auto;
+      border: none;
+      border-radius: 0.2rem;
+      padding: 0.4rem 1rem;
+      font-size: 1.2rem;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: capitalize;
+    }
+    button {
+      margin-left: 1rem;
+      padding: 0.4rem 1rem;
+      border-radius: 0.2rem;
+      border: none;
+      font-size: 1.2rem;
+    }
   }
 </style>
