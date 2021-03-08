@@ -1,41 +1,80 @@
-// .correct {}
-// .wrong {}
-// .highlight {}
-// #app {}
-// #word-list-container {}
-// .word-list-item {}
-// #input-area {
-//   input {
-//   }
-//   button {
-//   }
-// }
+// --bg: #000;
+// --major: #000;
+// --input: #000;
+// --sub: #000;
+// --correct: #000;
+// --wrong: #000;
+// --highlight: #000;
 
-root {
-  // Default
-  &[data-theme='default'] {
-    --header-color: #e8c4b8;
-    --left-wing-color: #e8c4b8;
-    --right-wing-color: #e8c4b8;
-    --area-color: #fafafa;
-    --text-display-color: #363434;
-    --footer-color: #e8c4b8;
-    --highlight-color: #a56de2;
-    --correct-color: #68b723;
-    --wrong-color: #c6262e;
-    --input-wrong-color: rgba(198, 38, 46, 0.3);
+#root {
+  @black: rgb(5, 5, 5);
+  @white: rgb(247, 247, 247);
+
+  // Black On White
+  &[data-theme='BoW'] {
+    --bg: @white;
+    --major: @black;
+    --input: @white;
+    --sub: @black;
+    --correct: @black;
+    --wrong: rgb(168, 167, 167);
+    --highlight: rgb(0, 67, 155);
+    #input-area {
+      input {
+        color: var(--major);
+        border: 1.35px solid var(--major);
+        background: var(--input);
+      }
+    }
   }
+
+  // White On Black
+  &[data-theme='WoB'] {
+    --bg: @black;
+    --major: @white;
+    --input: @black;
+    --sub: @black;
+    --correct: @white;
+    --wrong: rgb(122, 122, 122);
+    --highlight: rgb(69, 142, 236);
+  }
+
   // Olivia
-  &[data-theme='olivia'] {
-    --header-color: #e8c4b8;
-    --left-wing-color: #e8c4b8;
-    --right-wing-color: #e8c4b8;
-    --area-color: #fafafa;
-    --text-display-color: #363434;
-    --footer-color: #e8c4b8;
-    --highlight-color: #a56de2;
-    --correct-color: #68b723;
-    --wrong-color: #c6262e;
-    --input-wrong-color: rgba(198, 38, 46, 0.3);
+  &[data-theme='Olivia'] {
+    --bg: #1c1b1d;
+    --major: #deaf9d;
+    --input: #1c1b1d;
+    --sub: #9b7070;
+    --correct: #deaf9d;
+    --wrong: #da8b8b;
+    --highlight: #de9db1;
+  }
+
+  background-color: var(--bg);
+
+  #input-area {
+    input {
+      color: var(--input);
+      background: var(--major);
+    }
+  }
+  .word-list-item {
+    color: var(--major);
+  }
+  .pinyin {
+    color: var(--sub);
+  }
+  .correct {
+    color: var(--correct);
+  }
+  .wrong {
+    color: var(--wrong);
+  }
+  .highlight {
+    color: var(--highlight);
+  }
+  nav,
+  footer {
+    color: var(--major);
   }
 }

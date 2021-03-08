@@ -11,9 +11,13 @@
       }"
       :ref="pushRef"
     >
-      <a class="pinyin" :class="{ hide: !config.showPinyin }">{{
-        item.shuang.map(e => e[0].toUpperCase() + e[1]).join('')
-      }}</a>
+      <transition name="fade-pinyin">
+        <a class="pinyin" v-if="config.showPinyin">
+          {{
+          item.shuang.map(e => e[0].toUpperCase() + e[1]).join('')
+          }}
+        </a>
+      </transition>
       {{ item.word }}
     </div>
   </div>
@@ -59,6 +63,33 @@
 </script>
 
 <style lang="less">
+  .fade-pinyin-enter-active {
+    animation: pinyin-fade-in 0.5s;
+    animation-timing-function: ease;
+  }
+  .fade-pinyin-leave-active {
+    animation: pinyin-fade-in 0.5s reverse;
+    animation-timing-function: ease;
+  }
+  @keyframes pinyin-fade-in {
+    0% {
+      position: relative;
+      opacity: 0;
+      transform: scale(0);
+    }
+    50% {
+      position: relative;
+      opacity: 0.2;
+    }
+    75% {
+      transform: scale(1.1);
+    }
+    100% {
+      position: relative;
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
   #word-list-container {
     box-sizing: border-box;
     display: flex;
@@ -76,6 +107,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
     /* font-size: 1.2rem; */
     .pinyin {
       position: relative;

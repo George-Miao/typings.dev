@@ -1,14 +1,8 @@
 <template>
   <div id="panel">
-    <word-list
-      :words="words"
-      :table="table"
-      :currentIndex="currentIndex"
-      :perPage="config.perPage"
-    />
+    <word-list :table="table" :currentIndex="currentIndex" />
     <div id="input-area">
       <input v-model="inputStr" @keypress.space="handleSpace" />
-      <button @click="currentIndex += 1">redo</button>
     </div>
   </div>
 </template>
@@ -34,16 +28,13 @@
   export default defineComponent({
     components: { WordList },
     setup() {
-      const config = computed(() => (inject('config') as ConfigStore).getState())
+      const configStore = inject('config') as ConfigStore
+      const config = computed(() => configStore.getState())
       const words = (wordListData as PinyinData).sort(() => Math.random() - 0.5)
       const ended = ref(false)
       const end = () => {
         console.log('ended')
         ended.value = true
-      }
-      const redo = () => {
-        console.log('redo')
-        ended.value = false
       }
       const table: TableType = reactive(
         words.slice(0, config.value.perPage).map(e => {
@@ -77,6 +68,7 @@
 
       return {
         config,
+        configStore,
         table,
         currentIndex,
         inputStr,

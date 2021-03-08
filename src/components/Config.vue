@@ -1,13 +1,17 @@
 <template>
-  <slot></slot>
+  <div id="root" :data-theme="config.getState().theme">
+    <main>
+      <slot></slot>
+    </main>
+  </div>
 </template>
 
 <script lang="ts">
   import { defineComponent, inject, provide, reactive, readonly } from 'vue'
   import { Store } from '@/utils/store'
   import { schemesNames } from '@/utils/pinyin'
-  import { Themes, SupportedScheme, Config } from '@/types'
-  import themeList from '@/data/themeList.json'
+  import { Config } from '@/types'
+  import { Themes, SupportedScheme } from '@/constants'
 
   let defaultConfig: Config = {
     showPinyin: true,
@@ -104,21 +108,20 @@
 
   export default defineComponent({
     setup() {
-      const configStore = new ConfigStore(inject('reload'))
-      configStore.reload()
+      const config = new ConfigStore(inject('reload'))
+      config.reload()
 
-      window.config = configStore
+      window.config = config
       window.help = () => {
         console.log('== Typings.dev help message ==')
         console.log('Config: use config.methodName to change configs')
         console.log(`Supported scheme: ${schemesNames.join(' / ')}`)
         console.log('Use config.setScheme(schemeName) to change')
-        configStore.printTable()
+        config.printTable()
       }
-      provide('config', configStore)
-      provide('theme', reactive(themeList))
+      provide('config', config)
       return {
-        configStore,
+        config,
       }
     },
     mounted() {

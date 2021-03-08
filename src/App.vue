@@ -1,11 +1,17 @@
 <template>
-  <Nav />
-  <Config><router-view v-if="isRouterAlive" /></Config>
-  <Footer />
+  <Config>
+    <Nav />
+    <router-view v-slot="{ Component }" v-if="isRouterAlive">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+    <Footer />
+  </Config>
 </template>
 
 <script lang="ts">
-  import { defineComponent, provide, reactive, ref } from 'vue'
+  import { defineComponent } from 'vue'
   import Config from '@/components/Config.vue'
   import Nav from '@/components/Nav.vue'
   import Footer from '@/components/Footer.vue'
@@ -37,3 +43,22 @@
     },
   })
 </script>
+<style>
+  .fade-enter-active {
+    animation: fade-in 0.5s;
+  }
+  .fade-leave-active {
+    animation: fade-in 0.5s reverse;
+  }
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+</style>
