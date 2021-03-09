@@ -1,13 +1,13 @@
 <template>
   <nav class="abs">
     <div class="left-wing">Typings.dev</div>
-    <div class="placeholder"></div>
     <div class="right-wing">
-      <div class="button-group">
-        <a class="text-button">Counted</a>
-        <a class="text-button on">Timed</a>
-        <a class="text-button">Programming</a>
-      </div>
+      <text-buttons :items="['Counted', 'Timed','Programming']" :selected="1" title="Test" />
+      <text-buttons
+        :items="['Button1', 'Button2','123', 'Butt123123123on2']"
+        :selected="3"
+        title="Test"
+      />
     </div>
   </nav>
   <slot />
@@ -19,9 +19,18 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
+  import { defineComponent, inject } from 'vue'
+  import { ConfigStore } from './Config.vue'
+  import TextButtons from './TextButtons.vue'
   export default defineComponent({
-    setup() {},
+    components: { TextButtons },
+    setup() {
+      const config = inject('config') as ConfigStore
+      return {
+        config,
+        state: config.getState(),
+      }
+    },
   })
 </script>
 
@@ -33,7 +42,7 @@
 
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr;
     align-items: center;
     gap: 0.5rem;
     .left-wing {

@@ -2,7 +2,7 @@
   <div id="panel">
     <word-list :table="table" :currentIndex="currentIndex" />
     <div id="input-area">
-      <input v-model="inputStr" @keypress.space="handleSpace" />
+      <input v-model="inputStr" @keypress.space="handleSpace" autofocus />
     </div>
   </div>
 </template>
@@ -94,9 +94,10 @@
     // height: 100%;
     input {
       flex: auto;
-      border: none;
-      border-radius: 0.2rem;
-      padding: 0.4rem 1rem;
+      // border: none;
+      // border-radius: 0.2rem;
+      margin: 0 0.4rem;
+      padding: 0.4rem 0;
       font-size: 1.2rem;
       font-family: 'JetBrains Mono', monospace;
       text-transform: capitalize;

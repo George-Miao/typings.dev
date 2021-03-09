@@ -22,8 +22,8 @@
     #input-area {
       input {
         color: var(--major);
-        border: 1.35px solid var(--major);
-        background: var(--input);
+        // border: 1.35px solid var(--major);
+        // background: var(--input);
       }
     }
   }
@@ -32,8 +32,8 @@
   &[data-theme='WoB'] {
     --bg: @black;
     --major: @white;
-    --input: @black;
-    --sub: @black;
+    --input: @white;
+    --sub: rgb(128, 128, 128);
     --correct: @white;
     --wrong: rgb(122, 122, 122);
     --highlight: rgb(69, 142, 236);
@@ -43,7 +43,7 @@
   &[data-theme='Olivia'] {
     --bg: #1c1b1d;
     --major: #deaf9d;
-    --input: #1c1b1d;
+    --input: #deaf9d;
     --sub: rgb(112, 81, 81);
     --correct: #deaf9d;
     --wrong: #88695d;
@@ -55,7 +55,14 @@
   #input-area {
     input {
       color: var(--input);
-      background: var(--major);
+      background: var(--bg);
+      // filter: sepia(20%);
+      border: none;
+      // outline: var(--major) solid 1px;
+      border-bottom: 2px solid var(--major);
+      &:focus {
+        outline: none;
+      }
     }
   }
   .word-list-item {

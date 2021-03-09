@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, inject, provide, reactive, readonly } from 'vue'
+  import { defineComponent, inject, provide, reactive } from 'vue'
   import { Store } from '@/utils/store'
   import { schemesNames } from '@/utils/pinyin'
   import { Config } from '@/types'
@@ -58,6 +58,8 @@
             'Available methods': Object.getOwnPropertyNames(ConfigStore.prototype)
               .slice(3)
               .join(' / '),
+            'Available themes': this.themes.join(' / '),
+            'Available schemes': this.schemes.join(' / '),
           },
           this.state,
         ),
@@ -69,6 +71,8 @@
       this.printTable()
     }
     setTheme(theme: Themes) {
+      if (!this.themes.includes(theme))
+        throw new Error(`Unknown theme name ${theme}`)
       this.state.theme = theme
       saveKV('theme', theme)
       this.printTable()
@@ -98,6 +102,12 @@
     clear() {
       //TODO: clear config settings
       Object.entries(this.state).forEach(() => {})
+    }
+    get schemes() {
+      return schemesNames
+    }
+    get themes() {
+      return Object.values(Themes)
     }
   }
 
