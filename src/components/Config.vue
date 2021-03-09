@@ -49,14 +49,12 @@
 
   // Config class
   class ConfigStore extends Store<Config> {
-    reload: () => void = () => {
-      console.log('No reload function given, Fallback to location.reload...')
-      location.reload()
-    }
-    constructor(reload?: () => void | undefined) {
+    global: GlobalStore
+    constructor(global: GlobalStore) {
       super()
-      if (reload) this.reload = reload
+      this.global = global
     }
+
     protected data() {
       return config
     }
@@ -90,7 +88,7 @@
       this.state.perPage = perPage
       saveKV('perPage', perPage)
       this.printTable()
-      this.reload()
+      this.global.reload()
     }
     setScheme(scheme: SupportedScheme) {
       if (!schemesNames.includes(scheme))
@@ -98,7 +96,7 @@
       this.state.scheme = scheme
       saveKV('scheme', scheme)
       this.printTable()
-      this.reload()
+      this.global.reload()
     }
     reset() {
       this.state = reactive(defaultConfig)
@@ -106,7 +104,7 @@
         saveKV(k, v)
       })
       this.printTable()
-      this.reload()
+      this.global.reload()
     }
     clear() {
       //TODO: clear config settings
@@ -121,6 +119,14 @@
   }
 
   class GlobalStore extends Store<Global> {
+    constructor(reload?: () => void | undefined) {
+      super()
+      if (reload) this.reload = reload
+    }
+    reload: () => void = () => {
+      console.log('No reload function given, Fallback to location.reload...')
+      location.reload()
+    }
     data() {
       return initGlobal
     }
@@ -140,16 +146,18 @@
 
   export default defineComponent({
     setup() {
-      const config = new ConfigStore(inject('reload'))
-      const global = new GlobalStore()
+      const global = new GlobalStore(inject('reload'))
+      const config = new ConfigStore(global)
 
-      config.reload()
+      global.reload()
 
       window.config = config
       window.help = () => {
         console.log('== Typings.dev help message ==')
-        console.log('Config: use config.methodName to change configs')
-        console.log('Use config.setScheme(schemeName) to change')
+        console.log('Config: use config.methodName to change settings')
+        console.log(
+          'Configs will be stored in localStorage, use config.reset() to reset',
+        )
         config.printTable()
       }
 

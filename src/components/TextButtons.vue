@@ -7,10 +7,10 @@
     >{{setting.title}}</span>
     <span
       v-for="(item, index) in setting.options"
-      @click="click(index)"
+      @click="selecting && click(index)"
       :key="index"
       class="button"
-      :class="{selected: index == setting.selected.value, pointer: selecting || index != setting.selected.value}"
+      :class="{selected: index == setting.selected.value, pointer: selecting}"
     >{{item}}</span>
   </div>
 </template>

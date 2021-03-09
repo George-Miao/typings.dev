@@ -3,7 +3,7 @@
     <word-list
       :table="table"
       :currentIndex="currentIndex"
-      :class="{blur: globalStore.status === GlobalStatus.Suspended}"
+      :class="{blur: [GlobalStatus.Suspended, GlobalStatus.Ended].includes(globalStore.status) }"
     />
     <div id="input-area">
       <input
