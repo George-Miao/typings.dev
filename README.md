@@ -8,19 +8,34 @@
   - [x] Refresh on config
   - [x] Buttons to change config
   - [x] Change number of counted mode
-  - [ ] More content
-  - [ ] Timed mode
+- More content
+  - [ ] Normal Pinyin
+  - [ ] English
+  - [ ] Chinese direct input
 - [ ] Stats after typing
-- [ ] More modes
-  - [ ] Counted mode
+- [ ] Performance
+  - [ ] Optimize typekit loading
+  - [ ] Optimize first screen loading
+  - [ ] PWA support
+- More input mode
+  - [x] Counted mode
+  - [ ] Timed mode
   - [ ] Zen mode
   - [ ] Coding mode
-- [ ] More themes
+- More themes
+  - [x] Olivia
+  - [x] BoW
+  - [x] WoB
 - [ ] i18n
+  - [x] English
   - [ ] Chinese
   - [ ] Japanese
-- [ ] Toggle
+- Toggle input content
   - [ ] Punctuation
   - [ ] Numbers
 - [ ] Hotkey
   - [ ] Hotkey customization
+  - [ ] Tab and enter for quick restart
+  - [ ] Esc for command palette
+- Animation
+  - [ ] Word list pinyin animation
