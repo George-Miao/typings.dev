@@ -5,7 +5,7 @@
   --bg: #f7f7f7;
   --major: #050505;
   --input: #f7f7f7;
-  --sub: #050505;
+  --sub: #4e4e4e;
   --correct: #050505;
   --wrong: #a8a7a7;
   --highlight: #00439b;
@@ -28,9 +28,9 @@
   --bg: #1c1b1d;
   --major: #deaf9d;
   --input: #1c1b1d;
-  --sub: #9b7070;
+  --sub: #705151;
   --correct: #deaf9d;
-  --wrong: #da8b8b;
+  --wrong: #88695d;
   --highlight: #de9db1;
 }
 #root #input-area input {

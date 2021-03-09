@@ -1,26 +1,24 @@
 <template>
   <Config>
-    <Nav />
-    <router-view v-slot="{ Component }" v-if="isRouterAlive">
-      <transition name="fade" mode="out-in">
-        <component :is="Component" />
-      </transition>
-    </router-view>
-    <Footer />
+    <Meta>
+      <router-view v-slot="{ Component }" v-if="isRouterAlive">
+        <transition name="fade" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
+    </Meta>
   </Config>
 </template>
 
 <script lang="ts">
   import { defineComponent } from 'vue'
   import Config from '@/components/Config.vue'
-  import Nav from '@/components/Nav.vue'
-  import Footer from '@/components/Footer.vue'
+  import Meta from '@/components/Meta.vue'
 
   export default defineComponent({
     components: {
       Config,
-      Nav,
-      Footer,
+      Meta,
     },
     provide() {
       return {
