@@ -10,7 +10,7 @@
       @click="click(index)"
       :key="index"
       class="button"
-      :class="{selected: index == setting.selected, pointer: selecting || index != setting.selected}"
+      :class="{selected: index == setting.selected.value, pointer: selecting || index != setting.selected.value}"
     >{{item}}</span>
   </div>
 </template>
@@ -28,7 +28,6 @@
           `${this.setting.title} has been changed to "${this.setting.options[index]}"`,
         )
         this.selecting = false
-        this.setting.selected = index
         this.setting.select(index)
       },
     },

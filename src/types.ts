@@ -1,5 +1,5 @@
 import type {SupportedScheme, SupportedThemes} from '@/constants'
-import { Ref } from '@vue/reactivity'
+import { ComputedRef, Ref } from '@vue/reactivity'
 export enum WordStatus {
   NotReached,
   Wrong,
@@ -18,6 +18,14 @@ export interface Config {
   scheme: SupportedScheme
   mode: 'counted'
 }
+
+export type Setting = {
+  title: string
+  options: string[]
+  selected: ComputedRef<number>
+  show: ComputedRef<boolean> | boolean
+  select: (index: number) => void
+}
 export interface Scheme {
   id: number
   name: SupportedScheme
@@ -32,10 +40,3 @@ export type PinyinUnit = [string] | [string, string]
 export type Pinyin = PinyinUnit[]
 export type PinyinData = [string, Pinyin][]
 
-export type Setting = {
-  title: string
-  options: string[]
-  selected: number
-  show: boolean
-  select: (index: number) => void
-}

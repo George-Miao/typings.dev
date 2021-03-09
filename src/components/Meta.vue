@@ -16,14 +16,14 @@
 <script lang="ts">
   import { SupportedScheme, SupportedThemes } from '@/constants'
   import { Setting } from '@/types'
-  import { defineComponent, inject, reactive, ref } from 'vue'
+  import { computed, defineComponent, inject, reactive, ref } from 'vue'
   import { ConfigStore } from './Config.vue'
   import TextButtons from './TextButtons.vue'
   export default defineComponent({
     components: { TextButtons },
     setup() {
       const config = inject('config') as ConfigStore
-      const settingGroup: Setting[] = reactive([
+      const settingGroup: Setting[] = [
         // {
         //   title: 'Mode',
         //   options: ['Counted', 'Timed', 'Zen'],
@@ -34,16 +34,20 @@
         {
           title: 'Scheme',
           options: config.schemes,
-          selected: config.schemes.indexOf(config.getState().scheme),
+          selected: computed(() =>
+            config.schemes.indexOf(config.getState().scheme),
+          ),
           show: true,
           select(index) {
             config.setScheme(config.schemes[index] as SupportedScheme)
           },
         },
         {
-          title: 'Time',
+          title: 'Theme',
           options: config.themes,
-          selected: config.themes.indexOf(config.getState().theme),
+          selected: computed(() =>
+            config.themes.indexOf(config.getState().theme),
+          ),
           show: true,
           select(index) {
             config.setTheme(config.themes[index] as SupportedThemes)
@@ -52,13 +56,29 @@
         {
           title: 'Pinyin',
           options: ['On', 'Off'],
-          selected: config.getState().showPinyin ? 0 : 1,
+          selected: computed(() => (config.getState().showPinyin ? 0 : 1)),
           show: true,
+          select(index) {
+            const cur = config.getState().showPinyin ? 0 : 1
+            if (index == cur) return
+            config.togglePinyin()
+          },
+        },
+        {
+          title: 'Count',
+          options: ['On', 'Off'],
+          selected: computed(() => (config.getState().showPinyin ? 0 : 1)),
+          show: computed(() => {
+            // In Counted mode
+            // return settingGroup[0].selected == 0
+            return true
+          }),
           select(index) {
             config.togglePinyin()
           },
         },
-      ])
+      ]
+      console.log(settingGroup)
       return {
         config,
         settingGroup,
