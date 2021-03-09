@@ -1,4 +1,4 @@
-export enum Themes {
+export enum SupportedThemes {
   BoW = 'BoW',
   WoB = 'WoB',
   Olivia = 'Olivia',

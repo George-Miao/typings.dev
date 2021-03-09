@@ -1,4 +1,5 @@
-import type {SupportedScheme, Themes} from '@/constants'
+import type {SupportedScheme, SupportedThemes} from '@/constants'
+import { Ref } from '@vue/reactivity'
 export enum WordStatus {
   NotReached,
   Wrong,
@@ -12,7 +13,7 @@ export type StrToStrOrAry = {
 
 export interface Config {
   showPinyin: boolean
-  theme: Themes
+  theme: SupportedThemes
   perPage: number
   scheme: SupportedScheme
   mode: 'counted'
@@ -30,3 +31,11 @@ export interface Scheme {
 export type PinyinUnit = [string] | [string, string]
 export type Pinyin = PinyinUnit[]
 export type PinyinData = [string, Pinyin][]
+
+export type Setting = {
+  title: string
+  options: string[]
+  selected: number
+  show: boolean
+  select: (index: number) => void
+}

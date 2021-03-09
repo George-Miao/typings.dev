@@ -81,9 +81,9 @@
 
 <style lang="less">
   #panel {
-    padding: 1.4rem 1rem;
+    // padding: 1.4rem 1rem;
     border-radius: 5px;
-    margin: auto;
+    // margin: auto;
     // max-width: 650px;
   }
 

@@ -25,6 +25,7 @@ main {
   min-height: 100vh;
   display: flex;
   margin: 0 auto;
+  padding: 0 2rem;
   flex-flow: column;
 }
 .abs {
@@ -34,4 +35,15 @@ main {
   margin: auto;
   display: flex;
   align-items: center;
+}
+.pointer {
+  cursor: pointer;
+}
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

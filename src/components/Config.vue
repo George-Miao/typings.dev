@@ -11,11 +11,11 @@
   import { Store } from '@/utils/store'
   import { schemesNames } from '@/utils/pinyin'
   import { Config } from '@/types'
-  import { Themes, SupportedScheme } from '@/constants'
+  import { SupportedThemes, SupportedScheme } from '@/constants'
 
   let defaultConfig: Config = {
     showPinyin: true,
-    theme: Themes.BoW,
+    theme: SupportedThemes.BoW,
     perPage: 50,
     scheme: SupportedScheme.Ziranma,
     mode: 'counted',
@@ -70,7 +70,7 @@
       saveKV('showPinyin', this.state.showPinyin)
       this.printTable()
     }
-    setTheme(theme: Themes) {
+    setTheme(theme: SupportedThemes) {
       if (!this.themes.includes(theme))
         throw new Error(`Unknown theme name ${theme}`)
       this.state.theme = theme
@@ -107,7 +107,7 @@
       return schemesNames
     }
     get themes() {
-      return Object.values(Themes)
+      return Object.values(SupportedThemes)
     }
   }
 

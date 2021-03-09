@@ -1,14 +1,9 @@
 <template>
   <nav class="abs">
-    <div class="left-wing">Typings.dev</div>
-    <div class="right-wing">
-      <text-buttons :items="['Counted', 'Timed','Programming']" :selected="1" title="Test" />
-      <text-buttons
-        :items="['Button1', 'Button2','123', 'Butt123123123on2']"
-        :selected="3"
-        title="Test"
-      />
+    <div class="left-wing">
+      <text-buttons v-for="(setting, index) in settingGroup" :key="index" :setting="setting" />
     </div>
+    <div class="right-wing">Typings.dev</div>
   </nav>
   <slot />
   <footer class="abs">
@@ -19,15 +14,54 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, inject } from 'vue'
+  import { SupportedScheme, SupportedThemes } from '@/constants'
+  import { Setting } from '@/types'
+  import { defineComponent, inject, reactive, ref } from 'vue'
   import { ConfigStore } from './Config.vue'
   import TextButtons from './TextButtons.vue'
   export default defineComponent({
     components: { TextButtons },
     setup() {
       const config = inject('config') as ConfigStore
+      const settingGroup: Setting[] = reactive([
+        // {
+        //   title: 'Mode',
+        //   options: ['Counted', 'Timed', 'Zen'],
+        //   selected: 0,
+        //   show: true,
+        //   select(index) {},
+        // },
+        {
+          title: 'Scheme',
+          options: config.schemes,
+          selected: config.schemes.indexOf(config.getState().scheme),
+          show: true,
+          select(index) {
+            config.setScheme(config.schemes[index] as SupportedScheme)
+          },
+        },
+        {
+          title: 'Time',
+          options: config.themes,
+          selected: config.themes.indexOf(config.getState().theme),
+          show: true,
+          select(index) {
+            config.setTheme(config.themes[index] as SupportedThemes)
+          },
+        },
+        {
+          title: 'Pinyin',
+          options: ['On', 'Off'],
+          selected: config.getState().showPinyin ? 0 : 1,
+          show: true,
+          select(index) {
+            config.togglePinyin()
+          },
+        },
+      ])
       return {
         config,
+        settingGroup,
         state: config.getState(),
       }
     },
@@ -38,11 +72,11 @@
   nav {
     margin-top: 2rem;
     grid-template-areas: 'left right';
-    line-height: 2.3rem;
+    // line-height: 2.3rem;
 
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr auto;
     align-items: center;
     gap: 0.5rem;
     .left-wing {
