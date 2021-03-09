@@ -1,5 +1,13 @@
 # typings.dev
 
+Yet another typing tool for Shuang users, inspired by [Monkeytype.com](https://Monkeytype.com), [typings.gg](https://typings.gg) and [typing-cn](https://barneyzhao.gitee.io/typing-cn/), without the need of selecting words. You only need to enter the letters!
+
+## Usage
+
+- Go to [typings.dev](https://typings.dev)
+- Select your preferred scheme at left-top corner
+- Start tying! Remember: _don't type in Chinese. Only Pinyin is required._
+
 ## TODOs and DONEs
 
 - [ ] Basic functionalities
