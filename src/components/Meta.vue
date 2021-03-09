@@ -1,5 +1,5 @@
 <template>
-  <nav class="abs">
+  <nav class="abs" :class="{transparent}">
     <div class="left-wing">
       <text-buttons v-for="(setting, index) in settingGroup" :key="index" :setting="setting" />
     </div>
@@ -10,16 +10,17 @@
 </template>
 
 <script lang="ts">
-  import { SupportedScheme, SupportedThemes } from '@/constants'
+  import { GlobalStatus, SupportedScheme, SupportedThemes } from '@/constants'
   import { Setting } from '@/types'
   import { computed, defineComponent, inject, reactive, ref } from 'vue'
-  import { ConfigStore } from './Config.vue'
+  import { ConfigStore, GlobalStore } from './Config.vue'
   import TextButtons from './TextButtons.vue'
   const countOptions = [5, 15, 25, 50]
   export default defineComponent({
     components: { TextButtons },
     setup() {
       const config = inject('config') as ConfigStore
+      const global = inject('global') as GlobalStore
       const settingGroup: Setting[] = [
         // {
         //   title: 'Mode',
@@ -77,10 +78,13 @@
           },
         },
       ]
-      console.log(settingGroup)
+      const transparent = computed(() => global.status === GlobalStatus.Started)
+      // console.log(settingGroup)
       return {
         config,
+        global,
         settingGroup,
+        transparent,
         state: config.getState(),
       }
     },
@@ -100,6 +104,14 @@
     gap: 0.5rem;
     .left-wing {
       font-size: 2.3rem;
+    }
+    &.transparent {
+      opacity: 0;
+      position: relative;
+      transform: translateY(-40px);
+      & ~ .home {
+        transform: translateY(-40px);
+      }
     }
   }
   footer {

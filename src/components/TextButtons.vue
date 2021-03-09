@@ -47,6 +47,7 @@
     flex-wrap: wrap;
     align-items: center;
     position: relative;
+    margin-right: auto;
     // height: 2.3rem;
     .title {
       display: inline-block;
@@ -82,6 +83,11 @@
         &:hover {
           color: var(--major);
         }
+      }
+    }
+    &:hover {
+      .title {
+        .major-color;
       }
     }
   }

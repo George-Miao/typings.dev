@@ -27,7 +27,7 @@
   }
 
   let initGlobal: Global = {
-    status: GlobalStatus.Started,
+    status: GlobalStatus.Init,
   }
 
   const saveKV = <T>(k: string, v: T) => {
@@ -124,6 +124,13 @@
     data() {
       return initGlobal
     }
+    get status() {
+      return this.state.status
+    }
+    updateStatue(newStatus: GlobalStatus) {
+      this.state.status = newStatus
+      console.log(`Updated status: ${newStatus}`)
+    }
   }
 
   declare const window: {
@@ -142,7 +149,6 @@
       window.help = () => {
         console.log('== Typings.dev help message ==')
         console.log('Config: use config.methodName to change configs')
-        console.log(`Supported scheme: ${schemesNames.join(' / ')}`)
         console.log('Use config.setScheme(schemeName) to change')
         config.printTable()
       }
@@ -157,5 +163,6 @@
       window.help()
     },
   })
-  export type { ConfigStore }
+
+  export type { ConfigStore, GlobalStore }
 </script>

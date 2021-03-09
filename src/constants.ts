@@ -20,7 +20,8 @@ export enum SupportedMode {
 }
 
 export enum GlobalStatus {
-  Init,
-  Started,
-  Ended,
+  Init = 'Init',
+  Started = 'Started',
+  Suspended = 'Suspended',
+  Ended = 'Ended',
 }

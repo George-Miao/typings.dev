@@ -47,3 +47,6 @@ main {
   -ms-user-select: none;
   user-select: none;
 }
+.blur {
+  filter: blur(1px);
+}

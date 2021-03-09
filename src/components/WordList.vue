@@ -100,7 +100,7 @@
 
   .word-list-item {
     box-sizing: content-box;
-    margin: 0.1rem 0.45rem;
+    margin: 0 0.8rem 0.2rem 0;
     text-align: center;
     margin-bottom: 0.6rem;
     display: flex;
