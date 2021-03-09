@@ -7,8 +7,8 @@
   - [x] Load themes (Instead of loading themes from remote, I hard code them into one theme file, and change with css variable and h5 data attribute)
   - [x] Refresh on config
   - [x] Buttons to change config
+  - [x] Change number of counted mode
   - [ ] More content
-  - [ ] Change number of
   - [ ] Timed mode
 - [ ] Stats after typing
 - [ ] More modes
