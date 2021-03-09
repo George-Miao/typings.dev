@@ -119,13 +119,20 @@
   }
 
   class GlobalStore extends Store<Global> {
+    reload: () => void
     constructor(reload?: () => void | undefined) {
       super()
-      if (reload) this.reload = reload
-    }
-    reload: () => void = () => {
-      console.log('No reload function given, Fallback to location.reload...')
-      location.reload()
+      if (reload)
+        this.reload = () => {
+          this.state.status = GlobalStatus.Init
+          reload()
+        }
+      else {
+        console.log('No reload function given, Fallback to location.reload...')
+        this.reload = () => {
+          location.reload()
+        }
+      }
     }
     data() {
       return initGlobal
