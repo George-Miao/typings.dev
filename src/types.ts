@@ -1,3 +1,4 @@
+import { GlobalStatus, SupportedMode } from './constants';
 import type {SupportedScheme, SupportedThemes} from '@/constants'
 import { ComputedRef, Ref } from '@vue/reactivity'
 export enum WordStatus {
@@ -13,10 +14,14 @@ export type StrToStrOrAry = {
 
 export interface Config {
   showPinyin: boolean
-  theme: SupportedThemes
   perPage: number
+  theme: SupportedThemes
   scheme: SupportedScheme
-  mode: 'counted'
+  mode: SupportedMode
+}
+
+export interface Global {
+  status: GlobalStatus
 }
 
 export type Setting = {

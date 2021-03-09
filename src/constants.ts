@@ -14,3 +14,13 @@ export enum SupportedScheme {
   ZhinengABC = 'zhinengABC',
   Ziguang = 'ziguang',
 }
+
+export enum SupportedMode {
+  Counted = 'Counted',
+}
+
+export enum GlobalStatus {
+  Init,
+  Started,
+  Ended,
+}

@@ -6,11 +6,7 @@
     <div class="right-wing">Typings.dev</div>
   </nav>
   <slot />
-  <footer class="abs">
-    <a>1</a>
-    <a>2</a>
-    <a>3</a>
-  </footer>
+  <footer class="abs"></footer>
 </template>
 
 <script lang="ts">
@@ -19,6 +15,7 @@
   import { computed, defineComponent, inject, reactive, ref } from 'vue'
   import { ConfigStore } from './Config.vue'
   import TextButtons from './TextButtons.vue'
+  const countOptions = [5, 15, 25, 50]
   export default defineComponent({
     components: { TextButtons },
     setup() {
@@ -66,15 +63,17 @@
         },
         {
           title: 'Count',
-          options: ['On', 'Off'],
-          selected: computed(() => (config.getState().showPinyin ? 0 : 1)),
+          options: countOptions.map(e => e.toString()),
+          selected: computed(() =>
+            countOptions.indexOf(config.getState().perPage),
+          ),
           show: computed(() => {
             // In Counted mode
             // return settingGroup[0].selected == 0
             return true
           }),
           select(index) {
-            config.togglePinyin()
+            config.setPerPage(countOptions[index])
           },
         },
       ]

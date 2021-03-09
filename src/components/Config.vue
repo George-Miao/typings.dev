@@ -10,15 +10,24 @@
   import { defineComponent, inject, provide, reactive } from 'vue'
   import { Store } from '@/utils/store'
   import { schemesNames } from '@/utils/pinyin'
-  import { Config } from '@/types'
-  import { SupportedThemes, SupportedScheme } from '@/constants'
+  import { Config, Global } from '@/types'
+  import {
+    SupportedThemes,
+    SupportedScheme,
+    GlobalStatus,
+    SupportedMode,
+  } from '@/constants'
 
   let defaultConfig: Config = {
     showPinyin: true,
     theme: SupportedThemes.BoW,
     perPage: 50,
     scheme: SupportedScheme.Ziranma,
-    mode: 'counted',
+    mode: SupportedMode.Counted,
+  }
+
+  let initGlobal: Global = {
+    status: GlobalStatus.Started,
   }
 
   const saveKV = <T>(k: string, v: T) => {
@@ -111,6 +120,12 @@
     }
   }
 
+  class GlobalStore extends Store<Global> {
+    data() {
+      return initGlobal
+    }
+  }
+
   declare const window: {
     config: ConfigStore
     help: () => void
@@ -119,6 +134,8 @@
   export default defineComponent({
     setup() {
       const config = new ConfigStore(inject('reload'))
+      const global = new GlobalStore()
+
       config.reload()
 
       window.config = config
@@ -129,7 +146,9 @@
         console.log('Use config.setScheme(schemeName) to change')
         config.printTable()
       }
+
       provide('config', config)
+      provide('global', global)
       return {
         config,
       }
