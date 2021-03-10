@@ -10,13 +10,13 @@ Yet another typing tool for Shuang users, inspired by [Monkeytype.com](https://M
 
 ## TODOs and DONEs
 
-- [ ] Basic functionalities
+- [x] Basic functionalities
   - [x] Validate
   - [x] Load themes (Instead of loading themes from remote, I hard code them into one theme file, and change with css variable and h5 data attribute)
   - [x] Refresh on config
   - [x] Buttons to change config
   - [x] Change number of counted mode
-- More content
+- [ ] More content
   - [ ] Normal Pinyin
   - [ ] English
   - [ ] Chinese direct input
@@ -25,12 +25,12 @@ Yet another typing tool for Shuang users, inspired by [Monkeytype.com](https://M
   - [ ] Optimize typekit loading
   - [ ] Optimize first screen loading
   - [ ] PWA support
-- More input mode
+- [ ] More input mode
   - [x] Counted mode
   - [ ] Timed mode
   - [ ] Zen mode
   - [ ] Coding mode
-- More themes
+- [ ] More themes
   - [x] Olivia
   - [x] BoW
   - [x] WoB
@@ -38,7 +38,7 @@ Yet another typing tool for Shuang users, inspired by [Monkeytype.com](https://M
   - [x] English
   - [ ] Chinese
   - [ ] Japanese
-- Toggle input content
+- [ ] Toggle input content
   - [ ] Punctuation
   - [ ] Numbers
 - [ ] Hotkey
@@ -46,4 +46,4 @@ Yet another typing tool for Shuang users, inspired by [Monkeytype.com](https://M
   - [ ] Tab and enter for quick restart
   - [ ] Esc for command palette
 - Animation
-  - [ ] Word list pinyin animation
+  - [ ] Word list pinyin animation fine-tuning
