@@ -21,7 +21,7 @@
   let defaultConfig: Config = {
     showPinyin: true,
     theme: SupportedThemes.BoW,
-    perPage: 50,
+    perPage: 25,
     scheme: SupportedScheme.Ziranma,
     mode: SupportedMode.Counted,
   }
