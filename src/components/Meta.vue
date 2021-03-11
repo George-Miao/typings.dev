@@ -106,7 +106,6 @@
       font-size: 2.3rem;
     }
     &.transparent {
-      opacity: 0;
       position: relative;
       transform: translateY(-40px);
       & ~ .home {

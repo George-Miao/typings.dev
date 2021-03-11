@@ -1,10 +1,6 @@
 <template>
   <div id="panel">
-    <word-list
-      :table="table"
-      :currentIndex="currentIndex"
-      :class="{blur: [GlobalStatus.Suspended, GlobalStatus.Ended].includes(globalStore.status) }"
-    />
+    <word-list :table="table" :currentIndex="currentIndex" />
     <div id="input-area">
       <input
         v-model="inputStr"
@@ -124,7 +120,6 @@
     justify-content: space-between;
     input {
       flex: auto;
-      margin: 0 0.4rem;
       padding: 0.4rem 0;
       font-size: 1.2rem;
       font-family: 'JetBrains Mono', monospace;
