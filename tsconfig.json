@@ -5,6 +5,7 @@
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
+    "strictNullChecks": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
