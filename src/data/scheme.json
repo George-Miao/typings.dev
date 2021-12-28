@@ -1,6 +1,87 @@
 [
   {
     "id": 0,
+    "name": "拼音",
+    "pinyin": "pinyin",
+    "scheme": {
+      "initial": {
+        "b": "b",
+        "c": "c",
+        "d": "d",
+        "f": "f",
+        "g": "g",
+        "h": "h",
+        "j": "j",
+        "k": "k",
+        "l": "l",
+        "m": "m",
+        "n": "n",
+        "p": "p",
+        "q": "q",
+        "r": "r",
+        "s": "s",
+        "t": "t",
+        "w": "w",
+        "x": "x",
+        "y": "y",
+        "z": "z",
+        "ch": "ch",
+        "sh": "sh",
+        "zh": "zh"
+      },
+      "final": {
+        "a": "a",
+        "ai": "ai",
+        "an": "an",
+        "ang": "ang",
+        "ao": "ao",
+        "e": "e",
+        "ei": "ei",
+        "en": "en",
+        "eng": "eng",
+        "i": "i",
+        "ia": "ia",
+        "ian": "ian",
+        "iang": "iang",
+        "iao": "iao",
+        "ie": "ie",
+        "iong": "iong",
+        "in": "in",
+        "ing": "ing",
+        "iu": "iu",
+        "o": "o",
+        "ong": "ong",
+        "ou": "ou",
+        "u": "u",
+        "ua": "ua",
+        "uai": "uai",
+        "uan": "uan",
+        "uang": "uang",
+        "ue": "ue",
+        "ui": "ui",
+        "un": "un",
+        "uo": "uo",
+        "v": "v",
+        "ve": "ve"
+      },
+      "other": {
+        "a": "a",
+        "ai": "ai",
+        "an": "an",
+        "ang": "ang",
+        "ao": "ao",
+        "e": "e",
+        "ei": "ei",
+        "en": "en",
+        "eng": "eng",
+        "er": "er",
+        "o": "o",
+        "ou": "ou"
+      }
+    }
+  },
+  {
+    "id": 1,
     "name": "自然码",
     "pinyin": "ziranma",
     "scheme": {
@@ -81,7 +162,7 @@
     }
   },
   {
-    "id": 1,
+    "id": 2,
     "name": "国标",
     "pinyin": "guobiao",
     "scheme": {
@@ -162,7 +243,7 @@
     }
   },
   {
-    "id": 2,
+    "id": 3,
     "name": "拼音加加",
     "pinyin": "pinyinjiajia",
     "scheme": {
@@ -243,7 +324,7 @@
     }
   },
   {
-    "id": 3,
+    "id": 4,
     "name": "搜狗双拼",
     "pinyin": "sougou",
     "scheme": {
@@ -324,7 +405,7 @@
     }
   },
   {
-    "id": 3,
+    "id": 4,
     "name": "微软",
     "pinyin": "weiruan",
     "scheme": {
@@ -405,7 +486,7 @@
     }
   },
   {
-    "id": 4,
+    "id": 5,
     "name": "小鹤",
     "pinyin": "xiaohe",
     "scheme": {
@@ -486,7 +567,7 @@
     }
   },
   {
-    "id": 5,
+    "id": 6,
     "name": "智能ABC",
     "pinyin": "zhinengABC",
     "scheme": {
@@ -567,7 +648,7 @@
     }
   },
   {
-    "id": 6,
+    "id": 7,
     "name": "紫光双拼",
     "pinyin": "ziguang",
     "scheme": {
