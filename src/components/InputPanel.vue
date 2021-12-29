@@ -6,18 +6,25 @@
         v-model="inputStr"
         ref="inputRef"
         @keypress.space="handleSpace"
+        @keypress.enter="handleSpace"
         @keyup="handleInput"
         @input.once="startInput"
         @blur="loseFocus"
         @focus="restoreFocus"
-        autofocus
-      />
+        autofocus />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, onMounted, reactive, ref } from 'vue'
+import {
+  computed,
+  defineComponent,
+  inject,
+  onMounted,
+  reactive,
+  ref
+} from 'vue'
 import wordListData from '@/data/generated.json'
 
 import type { PinyinData, Pinyin } from '@/utils/types'
@@ -129,9 +136,7 @@ export default defineComponent({
       inputStr.value = ''
     }
 
-    onMounted(() =>
-      inputRef.value?.focus()
-    )
+    onMounted(() => inputRef.value?.focus())
 
     return {
       table,
