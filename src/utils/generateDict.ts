@@ -1,6 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable @typescript-eslint/no-var-requires */
-
 /**
  * Util script to generate static dict.
  * Usage:
@@ -107,12 +104,12 @@ const splitInitialAndFinal = (pinyin: string) => {
   } else return null
 }
 
-const zh = require('zh_cn')
-const fs = require('fs')
+import zh from 'zh_cn'
+import fs from 'fs'
 
-const data = require('../data/wordList.json')
+import data from '../data/wordList.json'
 
-const exportLength = parseInt((process as { argv: string[] }).argv[2]) || 500
+const exportLength = parseInt(process.argv[2]) || 500
 
 const generate = (e: any[]) =>
   e

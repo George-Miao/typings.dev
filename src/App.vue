@@ -71,6 +71,8 @@ export default defineComponent({
 
     watch(config.activeTheme, onThemeUpdate)
 
+    console.log(config.activeTheme.value)
+
     return {
       reload,
       margin,
@@ -123,8 +125,8 @@ a {
   --minor: v-bind('theme.minor');
   --highlight: v-bind('theme.highlight');
 
-  font-family: 'Jetbrains Mono', 'Nimbus Roman No9 L', '\5b8b\4f53',
-    'PingFang SC', 'Hiragino Sans GB', 'Noto Serif SC', 'Microsoft Yahei',
+  font-family: 'Jetbrains Mono', 'Nimbus Roman No9 L', 'PingFang SC',
+    'Hiragino Sans GB', 'Noto Serif SC', 'Microsoft Yahei',
     'WenQuanYi Micro Hei', 'ST Heiti', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -16,10 +16,11 @@ module.exports = {
   },
   plugins: ['vue', '@typescript-eslint'],
   rules: {
-    'indent': ['warn', 2],
+    indent: ['warn', 2],
     'linebreak-style': ['warn', 'unix'],
-    'quotes': ['warn', 'single'],
-    'semi': ['warn', 'never'],
+    quotes: ['warn', 'single'],
+    semi: ['warn', 'never'],
     'vue/no-multiple-template-root': 'off'
-  }
+  },
+  ignorePatterns: ['*.config.*', '*rc*']
 }

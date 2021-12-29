@@ -2,8 +2,6 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 
-import './registerServiceWorker'
-
 const asciiArt = `
  _____             _                      _
 /__   \\_   _ _ __ (_)_ __   __ _ ___   __| | _____   __

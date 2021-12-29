@@ -7,9 +7,12 @@
     "email": "gm@miao.dev"
   },
   "scripts": {
-    "dev": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
+    "d": "vite",
+    "dev": "vite",
+    "b": "yarn build",
+    "build": "tsc --noEmit && vite build",
+    "serve": "yarn build && vite preview",
+    "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore --fix src",
     "gen": "ts-node src/utils/generateDict"
   },
   "vue": {
@@ -19,27 +22,21 @@
   },
   "dependencies": {
     "chart.js": "^3.7.0",
-    "register-service-worker": "^1.7.1",
     "vue": "^3.0.0",
     "vue-chart-3": "^3.0.4",
     "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
+    "@types/node": "^17.0.5",
     "@typescript-eslint/eslint-plugin": "^5.8.0",
     "@typescript-eslint/parser": "^5.8.0",
-    "@vue/cli-plugin-babel": "^4.5.0",
-    "@vue/cli-plugin-pwa": "^4.5.0",
-    "@vue/cli-plugin-router": "^4.5.0",
-    "@vue/cli-plugin-typescript": "^4.5.15",
-    "@vue/cli-service": "^4.5.11",
-    "@vue/compiler-sfc": "^3.0.0",
-    "eslint": "^8.5.0",
-    "eslint-plugin-vue": "^8.2.0",
+    "@vitejs/plugin-vue": "^1.6.1",
+    "eslint": "8",
+    "eslint-plugin-vue": "8",
     "less": "^3.0.4",
-    "less-loader": "^5.0.0",
-    "lint-staged": "^9.5.0",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.4",
+    "vite": "^2.5.4",
     "vue-eslint-parser": "^8.0.1",
     "zh_cn": "^0.0.7"
   }
