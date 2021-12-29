@@ -1,0 +1,51 @@
+{
+  "BoW": {
+    "background": "rgb(247, 247, 247)",
+    "major": "rgb(5, 5, 5)",
+    "minor": "rgb(165, 165, 165)",
+    "highlight": "rgb(0, 67, 155)",
+    "error": "rgb(230, 196, 91)"
+  },
+  "WoB": {
+    "background": "rgb(20, 20, 20)",
+    "major": "rgb(247, 247, 247)",
+    "minor": "rgb(128, 128, 128)",
+    "highlight": "rgb(69, 142, 236)",
+    "error": "rgb(201, 160, 34)"
+  },
+  "Olivia": {
+    "background": "#1c1b1d",
+    "major": "#deaf9d",
+    "minor": "#806b6b",
+    "highlight": "#f0caca",
+    "error": "rgb(248, 175, 177)"
+  },
+  "Bearded": {
+    "background": "rgb(255, 255, 255)",
+    "major": "rgb(20, 20, 20)",
+    "minor": "rgb(156, 156, 156)",
+    "highlight": "rgb(55, 174, 111)",
+    "error": "rgb(230, 196, 91)"
+  },
+  "Nord": {
+    "background": "#434c5e",
+    "major": "#FFFFFF",
+    "minor": "#d8dee9",
+    "highlight": "#88c0d0",
+    "error": "#d08770"
+  },
+  "8002": {
+    "background": "#333a45",
+    "major": "#e9ecf0",
+    "minor": "#939eae",
+    "highlight": "#f44c7f",
+    "error": "#da3333"
+  },
+  "Press": {
+    "background": "#EBE6E2",
+    "major": "#333",
+    "minor": "#888",
+    "highlight": "#E2001A",
+    "error": "#e9a5ad"
+  }
+}

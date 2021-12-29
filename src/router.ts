@@ -1,17 +1,23 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Shuang from '@/views/ShuangPage.vue'
 import Stat from '@/views/StatPage.vue'
+import Help from '@/views/HelpPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
+    name: 'Typings.dev',
     component: Shuang
   },
   {
     path: '/shuang',
-    name: 'Shuang',
+    name: '双拼',
     component: Shuang
+  },
+  {
+    path: '/help',
+    name: '帮助',
+    component: Help
   },
   {
     path: '/stat',

@@ -17,12 +17,12 @@ Yet another typing tool for Shuang users, inspired by [Monkeytype.com](https://M
   - [x] Buttons to change config
   - [x] Change number of counted mode
 - [ ] More content
-  - [ ] Normal Pinyin
+  - [x] Normal Pinyin
   - [ ] English
   - [ ] Chinese direct input
 - [ ] Stats after typing
 - [ ] Performance
-  - [ ] Optimize typekit loading
+  - [x] Optimize typekit loading - done by removing it entirely
   - [ ] Optimize first screen loading
   - [ ] PWA support
 - [ ] More input mode
@@ -34,16 +34,17 @@ Yet another typing tool for Shuang users, inspired by [Monkeytype.com](https://M
   - [x] Olivia
   - [x] BoW
   - [x] WoB
-- [ ] i18n
-  - [x] English
-  - [ ] Chinese
-  - [ ] Japanese
+  - [x] Bearded
+  - [x] Nord
+  - [x] 8002
+  - [x] Press
 - [ ] Toggle input content
   - [ ] Punctuation
   - [ ] Numbers
 - [ ] Hotkey
   - [ ] Hotkey customization
-  - [ ] Tab and enter for quick restart
-  - [ ] Esc for command palette
-- Animation
-  - [ ] Word list pinyin animation fine-tuning
+  - [x] R for quick restart
+- [x] Animation
+  - [x] Word list pinyin animation fine-tuning
+- [x] Stats
+  - [x] Chart provided by chart.js

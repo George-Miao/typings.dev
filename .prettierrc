@@ -1,10 +1,10 @@
 {
-  "quoteProps": "consistent",
+  "quoteProps": "as-needed",
   "singleQuote": true,
   "semi": false,
   "bracketSpacing": true,
   "arrowParens": "avoid",
-  "useEditorConfig": true,
-  "trailingComma": "all",
-  "vueIndentScriptAndStyle": true
+  "trailingComma": "none",
+  "bracketSameLine": true,
+  "vueIndentScriptAndStyle": false
 }

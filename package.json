@@ -7,10 +7,15 @@
     "email": "gm@miao.dev"
   },
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "gen": "ts-node src/utils/generateDict"
+  },
+  "vue": {
+    "pwa": {
+      "themeColor": ""
+    }
   },
   "dependencies": {
     "chart.js": "^3.7.0",
@@ -20,17 +25,22 @@
     "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
     "@vue/cli-plugin-babel": "^4.5.0",
     "@vue/cli-plugin-pwa": "^4.5.0",
     "@vue/cli-plugin-router": "^4.5.0",
     "@vue/cli-plugin-typescript": "^4.5.15",
     "@vue/cli-service": "^4.5.11",
     "@vue/compiler-sfc": "^3.0.0",
+    "eslint": "^8.5.0",
+    "eslint-plugin-vue": "^8.2.0",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "lint-staged": "^9.5.0",
-    "ts-node": "^9.1.1",
+    "ts-node": "^10.4.0",
     "typescript": "^4.5.4",
+    "vue-eslint-parser": "^8.0.1",
     "zh_cn": "^0.0.7"
   }
 }
